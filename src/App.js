@@ -40,7 +40,12 @@ class App extends PureComponent {
   }
 
   componentDidMount() {
-
+    const w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+    const h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+    console.log(`
+      w: ${w}
+      h: ${h}
+    `)
   }
 
   componentWillUnmount() {
@@ -52,14 +57,17 @@ class App extends PureComponent {
       coordinates: {
         x: Math.round(coords.x),
         y: Math.round(coords.y),
+        width: coords.width,
         top: Math.round(coords.bottom) || null,
         left: Math.round(coords.left) || null,
+        // cssBottom = viewpor.height - coords.y
         bottom: Math.round(coords.bottom) || null,
+        // cssRight = viewpport.width - coords.x
         right: Math.round(coords.right) || null,
       },
       active: target,
       showModal: true,
-    })
+    });
   }
 
   handleCloseModal = () => {
@@ -71,6 +79,7 @@ class App extends PureComponent {
       <Page
         {...this.state}
         handleClick={this.handleClickOnTarget}
+        handleCloseModal={this.handleCloseModal}
       />
     );
   }
