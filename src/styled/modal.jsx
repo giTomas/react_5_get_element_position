@@ -38,6 +38,7 @@ const ModalClose = styled.div`
   right: 0;
   height: 1em;
   width: 1em;
+  cursor: pointer;
   &::before {
     content: '';
     position: absolute;
@@ -60,8 +61,11 @@ const ModalClose = styled.div`
   }
 `;
 
-const Modal = ({coordinates, handleCloseModal}) => (
+const matchNumber = str => (parseInt(str.match(/\d+/))+1);
+
+const Modal = ({coordinates, handleCloseModal, active}) => (
     <ModalContent>
+        <p>Element: {matchNumber(active)}</p>
         <p>x: {coordinates.x}px</p>
         <p>y: {coordinates.y}px</p>
       <ModalClose onClick={handleCloseModal} />

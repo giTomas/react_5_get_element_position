@@ -11,12 +11,13 @@ injectGlobal`
       --basic-font-size: calc(0.9rem + (1.25 - 0.9) * ((100vw - 18.75em) / (75 - 18.75)));
       --line-height: 1.4;
       --vertical-rhytm: calc(var(--basic-font-size)*var(--line-height));
+      --font-family: 'Montserrat', sans-serif;
     }
    html {
       font-size: var(--basic-font-size);
       font-kerning: normal;
       text-rendering: geometricPrecision;
-      font-family: 'Montserrat', sans-serif;
+      font-family: var(--font-family);
     }
    * {
     box-sizing: border-box;
