@@ -1,4 +1,4 @@
-import { partial, range } from 'ramda';
+import { range } from 'ramda';
 
 function *cartesian(head, ...tail) {
   let remainder = tail.length ? cartesian(...tail) : [[]];

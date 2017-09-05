@@ -3,6 +3,7 @@ import styled, { keyframes } from 'styled-components';
 
 const showModal = keyframes`
   from {
+    ${'' /* transform: scale(0); */}
     opacity: 0;
   }
 `
@@ -61,7 +62,7 @@ const ModalClose = styled.div`
   }
 `;
 
-const matchNumber = str => (parseInt(str.match(/\d+/))+1);
+const matchNumber = str => (parseInt(str.match(/\d+/),10)+1);
 
 const Modal = ({coordinates, handleCloseModal, active}) => (
     <ModalContent>

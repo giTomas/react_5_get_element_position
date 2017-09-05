@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import React from 'react';
 
-import TargetElement, { TargetElement2 } from './targetElement';
+import TargetElement from './targetElement';
 import Modal from './modal';
 
 const Wrapper = styled.div`
@@ -68,7 +68,7 @@ const Page = ({
       <GridContainer>
         {
           gridCoords.map((gridCoord,i) => (
-          <TargetElement2
+          <TargetElement
             key={`target-${i}`}
             handleClick={handleClick}
             number={i+1}
@@ -87,7 +87,6 @@ const Page = ({
           handleCloseModal={handleCloseModal}
           active={active}
         />
-
       }
     </Container>
   </Wrapper>

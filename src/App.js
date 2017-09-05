@@ -26,14 +26,15 @@ class App extends PureComponent {
       positions: combinations,
       active: null,
       gridCoords: [],
+      width: null,
     }
   }
 
   componentDidMount() {
-    const w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
-    const h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+    const width = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+    // const h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
     const gridCoords = getGridCoords(this.state.positions, 12)
-    this.setState({gridCoords});
+    this.setState({gridCoords, width});
   }
 
   componentWillUnmount() {
