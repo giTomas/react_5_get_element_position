@@ -53,6 +53,54 @@ const TargetElement = styled(AttachedRef)`
     transition: background-color 0.1s linear,
     color 0.1s linear;
   }
+  &:nth-child(1) {
+    grid-column-start: 1;
+    grid-column-end: 1;
+    grid-row-start: 1;
+    grid-row-end: 2;
+  }
+  &:nth-child(2) {
+    grid-column-start: 3;
+    grid-column-end: 4;
+    grid-row-start: 1;
+    grid-row-end: 2;
+  }
+  &:nth-child(3) {
+    grid-column-start: 6;
+    grid-column-end: 7;
+    grid-row-start: 1;
+    grid-row-end: 2;
+  }
+  &:nth-child(4) {
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 2;
+    grid-row-end: 3;
+  }
+  &:nth-child(5) {
+    grid-column-start: 5;
+    grid-column-end: 6;
+    grid-row-start: 2;
+    grid-row-end: 3;
+  }
+  &:nth-child(6) {
+    grid-column-start: 3;
+    grid-column-end: 4;
+    grid-row-start: 3;
+    grid-row-end: 4;
+  }
+  &:nth-child(7) {
+    grid-column-start: 4;
+    grid-column-end: 5;
+    grid-row-start: 4;
+    grid-row-end: 5;
+  }
+  &:nth-child(8) {
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 5;
+    grid-row-end: 6;
+  }
 `;
 
 export default TargetElement;

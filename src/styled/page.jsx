@@ -21,6 +21,21 @@ const GridContainer = styled.div`
   grid-template-columns: repeat(5, 1fr);
   ${'' /* grid-auto-columns: 100px; */}
   grid-auto-rows: 5em;
+
+  @media(max-width: 25em) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  @media(max-width: 20em) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  @media(max-width: 15em) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+`;
+
+const Description = styled.h2`
+  font-size: 2em;
+  margin-bottom: calc(var(--vertical-rhytm)*2);
 `;
 
 
@@ -34,6 +49,9 @@ const Page = ({
 }) => (
   <Wrapper>
     <Container>
+      <Description>
+        Click on the Target and get his x,y coordinates.
+      </Description>
       <GridContainer>
         {
           targets.map((target,i) => (

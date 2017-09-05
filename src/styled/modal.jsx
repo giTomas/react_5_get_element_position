@@ -32,11 +32,39 @@ const ModalContent = styled.div`
   z-index: 400;
 `;
 
+const ModalClose = styled.div`
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 1em;
+  width: 1em;
+  &::before {
+    content: '';
+    position: absolute;
+    left: 49%;
+    width: 3px;
+    height: 1em;
+    background-color: black;
+    ${'' /* transform-origin: top; */}
+    transform: rotate(-45deg);
+  }
+  &::after {
+    content: '';
+    position: absolute;
+    left: 49%;
+    width: 3px;
+    height: 1em;
+    background-color: black;
+    ${'' /* transform-origin: top; */}
+    transform: rotate(45deg);
+  }
+`;
+
 const Modal = ({coordinates, handleCloseModal}) => (
-    <ModalContent
-      onClick={handleCloseModal}>
+    <ModalContent>
         <p>x: {coordinates.x}px</p>
         <p>y: {coordinates.y}px</p>
+      <ModalClose onClick={handleCloseModal} />
     </ModalContent>
 );
 
