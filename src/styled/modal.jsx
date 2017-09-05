@@ -25,6 +25,7 @@ const ModalContent = styled.div`
   left: 50%;
   transform: translate(-50%, -50%);
   max-width: 400px;
+  min-width: 250px;
   padding: var(--vertical-rhytm) calc(var(--vertical-rhytm)*2);
   line-height: var(--line-height);
   background-color: rgba(255, 255, 255, 0.9);
