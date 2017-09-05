@@ -23,7 +23,7 @@ const ModalContent = styled.div`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  max-width: 350px;
+  max-width: 400px;
   padding: var(--vertical-rhytm) calc(var(--vertical-rhytm)*2);
   line-height: var(--line-height);
   background-color: rgba(255, 255, 255, 0.9);
@@ -65,7 +65,7 @@ const matchNumber = str => (parseInt(str.match(/\d+/))+1);
 
 const Modal = ({coordinates, handleCloseModal, active}) => (
     <ModalContent>
-        <p>Element: {matchNumber(active)}</p>
+        <p>Target: {matchNumber(active)}</p>
         <p>x: {coordinates.x}px</p>
         <p>y: {coordinates.y}px</p>
       <ModalClose onClick={handleCloseModal} />

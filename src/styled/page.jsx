@@ -35,12 +35,12 @@ const GridContainer = styled.div`
 
 const Description = styled.h2`
   font-size: 2em;
-  margin-bottom: calc(var(--vertical-rhytm)*2);
+  margin-bottom: calc(var(--vertical-rhytm));
 `;
 
 const NewGridButton = styled.button`
   font-size: 1em;
-  margin-bottom: var(--vertical-rhytm);
+  margin-bottom: calc(var(--vertical-rhytm)*2);
   border: 2px solid black;
   border-radius: 0;
   padding: 0.25em 0.5em;
@@ -65,20 +65,6 @@ const Page = ({
       <NewGridButton onClick={handleGenerateNewGrid}>
         New Grid
       </NewGridButton>
-      {/* <GridContainer>
-        {
-          targets.map((target,i) => (
-          <TargetElement
-            key={target}
-            handleClick={handleClick}
-            number={i+1}
-            target={target}
-            even={i%2}
-            active={active === target}/>
-          ))
-        }
-
-      </GridContainer> */}
       <GridContainer>
         {
           gridCoords.map((gridCoord,i) => (
