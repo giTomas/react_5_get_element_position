@@ -40,10 +40,10 @@ const Description = styled.h2`
 
 const NewGridButton = styled.button`
   font-family: var(--font-family);
-  color: var(font-color);
+  color: var(--font-color);
   font-size: 1em;
   margin-bottom: calc(var(--vertical-rhytm)*2);
-  border: 2px solid black;
+  border: 1px solid black;
   border-radius: 0;
   padding: 0.25em 0.5em;
 `;
