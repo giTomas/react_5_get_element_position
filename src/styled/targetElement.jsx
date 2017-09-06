@@ -1,12 +1,18 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 
-const AttachedRef = ({className, children, handleClick, number, target}) => {
+const show = keyframes`
+  from {
+    opacity: 0;
+  }
+`;
+
+const AttachedRef = ({className, children, handleClick, index, target}) => {
   let ref = null;
   return (
     <div
       ref={(elem) => {ref = elem;}}
-      onClick={() => handleClick(ref, target)}
+      onClick={() => handleClick(ref,  `target-${index}`)}
       className={className}>
       {children}
     </div>
@@ -14,8 +20,8 @@ const AttachedRef = ({className, children, handleClick, number, target}) => {
 }
 
 const TargetElement = styled(AttachedRef)`
-  height: 4.5em;
-  width: 4.5em;
+  height: 4em;
+  width: 4em;
   --color-active: ${props => props.active ? 'orange' : 'black'};
   background-color: var(--color-active);
   position: relative;
@@ -26,6 +32,13 @@ const TargetElement = styled(AttachedRef)`
   grid-column-end: ${props => props.grid[0]+1 || 'auto'};
   grid-row-start: ${props => props.grid[1] || 'auto'};
   grid-row-end: ${props => props.grid[1]+1 || 'auto'};
+  cursor: pointer;
+  box-shadow: 0 0 ${props => props.active ? '0' : '10px'} rgba(0, 0, 0, 0.35);
+  animation: 1s ${show} ease-out;
+  transition: box-shadow 0.25s ease-out;
+  &:hover {
+    box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+  }
   &::before {
     position: absolute;
     content: '';
@@ -40,7 +53,7 @@ const TargetElement = styled(AttachedRef)`
   }
   &::after {
     position: absolute;
-    ${props => `content: '${props.number || 0}';`};
+    ${props => `content: '${props.index+1 || 0}';`};
     text-align: center;
     top: 50%;
     left: 50%;

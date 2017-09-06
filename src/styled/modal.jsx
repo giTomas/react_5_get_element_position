@@ -3,20 +3,9 @@ import styled, { keyframes } from 'styled-components';
 
 const showModal = keyframes`
   from {
-    ${'' /* transform: scale(0); */}
     opacity: 0;
   }
-`
-// const ModalOverlay = styled.div`
-//   position: fixed;
-//   top: 0;
-//   left: 0;
-//   right: 0;
-//   bottom: 0;
-//   background-color: rgba(255, 255, 255, 0);
-//
-//   z-index: 400;
-// `;
+`;
 
 const ModalContent = styled.div`
   font-size: 2em;
@@ -24,12 +13,12 @@ const ModalContent = styled.div`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  max-width: 400px;
+  max-width: calc(400px + var(--vertical-rhytm) * 4);
   min-width: 250px;
-  padding: var(--vertical-rhytm) calc(var(--vertical-rhytm)*2);
+  padding: calc(var(--vertical-rhytm) * 2) calc(var(--vertical-rhytm) * 4);
   line-height: var(--line-height);
   background-color: rgba(255, 255, 255, 0.95);
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.35);
   animation: 0.5s ${showModal} ease-out;
   z-index: 400;
 `;
@@ -48,7 +37,6 @@ const ModalClose = styled.div`
     width: 3px;
     height: 1em;
     background-color: black;
-    ${'' /* transform-origin: top; */}
     transform: rotate(-45deg);
   }
   &::after {
@@ -58,22 +46,21 @@ const ModalClose = styled.div`
     width: 3px;
     height: 1em;
     background-color: black;
-    ${'' /* transform-origin: top; */}
     transform: rotate(45deg);
   }
 `;
 
-const Grey = styled.span`
-  color: grey;
+const Orange = styled.span`
+  color: orange;
 `;
 
 const matchNumber = str => (parseInt(str.match(/\d+/),10)+1);
 
 const Modal = ({coordinates, handleCloseModal, active}) => (
     <ModalContent>
-        <p><Grey>Target: {matchNumber(active)}</Grey></p>
-        <p><Grey>x:</Grey> {coordinates.x}px</p>
-        <p><Grey>y:</Grey> {coordinates.y}px</p>
+        <p>Target: <Orange>{matchNumber(active)}</Orange></p>
+        <p>x: <Orange>{coordinates.x}px</Orange></p>
+        <p>y: <Orange>{coordinates.y}px</Orange></p>
       <ModalClose onClick={handleCloseModal} />
     </ModalContent>
 );

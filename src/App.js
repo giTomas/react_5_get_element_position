@@ -67,7 +67,7 @@ class App extends PureComponent {
 
   handleGenerateNewGrid = () => {
     const gridCoords = getGridCoords(this.state.width)
-    this.setState({gridCoords});
+    this.setState({gridCoords, active: null, showModal: false});
   }
 
   handleCloseModal = () => {

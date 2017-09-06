@@ -1,34 +1,56 @@
 import { range, compose } from 'ramda';
 
+// function* cartesianN(head, ...tail) {
+//   // console.log(tail);
+//   let remainder = tail.length ? cartesian(...tail) : [[]];
+//
+//   for (let r of remainder) for (let h of head) yield [h, ...r]
+// }
+//
+// let cart = [];
+// for (let c of cartesian(colls, rows)) {
+//   cart.push(c)
+//   // cart.push([...c])
+//   console.log(c);
+// }
+
+
 function getPossibleCoords(obj) {
-  const cols = range(1,obj.cols+1);
+  const colls = range(1,obj.colls+1);
   const rows = range(1,obj.rows+1);
 
-  function* cartesian(head, ...tail) {
-    let remainder = tail.length ? cartesian(...tail) : [[]];
+  function* cartesian(cls, rws) {
 
-    for (let r of remainder) for (let h of head) yield [h, ...r]
+    for (let rw of rws) for (let cl of cls) yield [cl, rw]
   }
 
   let cart = [];
-  for (let c of cartesian(cols, rows)) {
-    cart.push([...c])
+  for (let c of cartesian(colls, rows)) {
+    cart.push(c)
+    // cart.push([...c])
+    // console.log(c);
   }
 
   return cart
 }
 
 const removeItemFromArr = (arr, index) => (
-  [...arr.slice(0, index), ...arr.slice(index + 1)]
+  [...arr.slice(0, index),
+   ...arr.slice(index + 1)]
 );
 
-const getRandomCoords = (pos, count=12) => {
+const randomCount = (min=4,max=12) => (
+  Math.floor(Math.random() * (max - min + 1) + min)
+);
+
+const getRandomCoords = (pos) => {
+  let count = randomCount()
   let oldPos = pos.slice();
   let randCoords = [];
 
   while (count > 0) {
-    const index    = Math.floor(Math.random() * oldPos.length);
-    const item     = oldPos[index];
+    const index = Math.floor(Math.random() * oldPos.length);
+    const item  = oldPos[index];
     randCoords.push(item);
     const newPos = removeItemFromArr(oldPos, index);
     oldPos = newPos;
@@ -38,6 +60,8 @@ const getRandomCoords = (pos, count=12) => {
   return randCoords;
 }
 
+// const curriedGetRandomCoords = curry(getRandomCoords);
+
 const sortCoords = (array) => {
   let arr = array.slice();
   arr.sort((a,b) => a[0] - b[0]);
@@ -46,30 +70,23 @@ const sortCoords = (array) => {
   return arr;
 }
 
-const getColsRows = (wWidth) => {
-  let grid = {};
+const getCollsRows = (wWidth) => {
   switch (true) {
     case  wWidth < 1100 && wWidth > 550:
-      grid.cols = 7;
-      grid.rows = 4;
-      return grid;
+      return {colls: 7, rows: 4};
     case wWidth < 550:
-      grid.cols = 4
-      grid.rows = 7
-      return grid;
+      return {colls: 4, rows: 5};
     default:
-      grid.cols = 9;
-      grid.rows = 4;
-      return grid;
+      return {colls: 9, rows: 4};
   }
-}
+};
 
 const getGridCoords = compose(
   sortCoords,
   getRandomCoords,
+  // curriedGetRandomCoords(randomCount(4,12)),
   getPossibleCoords,
-  getColsRows,
+  getCollsRows,
 )
-
 
 export default getGridCoords;
