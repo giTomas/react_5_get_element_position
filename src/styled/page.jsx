@@ -11,18 +11,21 @@ const Wrapper = styled.div`
 const Container = styled.div`
   margin-left: auto;
   margin-right: auto;
-  max-width: calc(30rem + (var(--vertical-rhytm) * 2));
+  max-width: calc(35rem + (var(--vertical-rhytm) * 2));
   padding: var(--vertical-rhytm);
 `;
 
 const GridContainer = styled.div`
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(5, 5rem);
+  ${'' /* grid-template-columns: repeat(7, 5rem); */}
+  justify-items: center;
+  align-items: center;
   ${'' /* grid-auto-columns: 100px; */}
+  grid-auto-columns: 5rem;
   grid-auto-rows: 5rem;
 
-  @media(max-width: 25em) {
+  ${'' /* @media(max-width: 25em) {
     grid-template-columns: repeat(4, 1fr);
   }
   @media(max-width: 20em) {
@@ -30,7 +33,7 @@ const GridContainer = styled.div`
   }
   @media(max-width: 15em) {
     grid-template-columns: repeat(2, 1fr);
-  }
+  } */}
 `;
 
 const Description = styled.h2`

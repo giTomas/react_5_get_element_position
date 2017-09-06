@@ -18,11 +18,11 @@ const TargetElement = styled(AttachedRef)`
   width: 4em;
   --color-active: ${props => props.active ? 'orange' : 'black'};
   background-color: var(--color-active);
-  margin: 0.5em;
+  padding: 0.5em;
   position: relative;
   border-radius: 50%;
   z-index: 1;
-  align-self: ${props => props.even ? 'flex-end' : 'auto'};
+  ${'' /* align-self: ${props => props.even ? 'flex-end' : 'auto'}; */}
   transition: background-color 0.2s linear;
   grid-column-start: ${props => props.grid[0] || 'auto'};
   grid-column-end: ${props => props.grid[0]+1 || 'auto'};
