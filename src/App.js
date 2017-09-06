@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import Page from './styled/page';
-import getGridCoords from './helpers/cartesian';
+import getGridCoords from './helpers/grid';
 import debounce from 'lodash.debounce';
 
 const getCoordinatesForModal = (coords, target) => ({

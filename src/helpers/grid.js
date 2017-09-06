@@ -61,7 +61,7 @@ const getColsRows = (wWidth) => {
       grid.rows = 7
       return grid;
     default:
-      grid.cols = 7;
+      grid.cols = 8;
       grid.rows = 4;
       return grid;
   }

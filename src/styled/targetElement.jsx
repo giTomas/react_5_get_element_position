@@ -14,8 +14,8 @@ const AttachedRef = ({className, children, handleClick, number, target}) => {
 }
 
 const TargetElement = styled(AttachedRef)`
-  height: 4em;
-  width: 4em;
+  height: 4.5em;
+  width: 4.5em;
   --color-active: ${props => props.active ? 'orange' : 'black'};
   background-color: var(--color-active);
   position: relative;

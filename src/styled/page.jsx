@@ -11,29 +11,18 @@ const Wrapper = styled.div`
 const Container = styled.div`
   margin-left: auto;
   margin-right: auto;
-  max-width: calc(35rem + (var(--vertical-rhytm) * 2));
+  max-width: calc(44rem + (var(--vertical-rhytm) * 2));
   padding: var(--vertical-rhytm);
 `;
 
 const GridContainer = styled.div`
   width: 100%;
   display: grid;
-  ${'' /* grid-template-columns: repeat(7, 5rem); */}
   justify-items: center;
   align-items: center;
-  ${'' /* grid-auto-columns: 100px; */}
-  grid-auto-columns: 5rem;
-  grid-auto-rows: 5rem;
+  grid-auto-columns: 5.5rem;
+  grid-auto-rows: 5.5rem;
 
-  ${'' /* @media(max-width: 25em) {
-    grid-template-columns: repeat(4, 1fr);
-  }
-  @media(max-width: 20em) {
-    grid-template-columns: repeat(3, 1fr);
-  }
-  @media(max-width: 15em) {
-    grid-template-columns: repeat(2, 1fr);
-  } */}
 `;
 
 const Description = styled.h2`
