@@ -1,7 +1,4 @@
 import { range, compose } from 'ramda';
-// import getGridCoords from './random'
-
-//utils
 
 function getPossibleCoords(obj) {
   const cols = range(1,obj.cols+1);
@@ -22,7 +19,7 @@ function getPossibleCoords(obj) {
 }
 
 const removeItemFromArr = (arr, index) => (
-  [...arr.slice(0, index), ...arr.slice(index + 1, arr.length)]
+  [...arr.slice(0, index), ...arr.slice(index + 1)]
 );
 
 const getRandomCoords = (pos, count=12) => {

@@ -1,23 +1,23 @@
 import React, { PureComponent } from 'react';
 import Page from './styled/page';
-import getGridCoords from './helpers/grid';
+import getGridCoords from './grid/';
 import debounce from 'lodash.debounce';
 
-const getCoordinatesForModal = (coords, target) => ({
-  coordinates: {
-    x: Math.round(coords.x),
-    y: Math.round(coords.y),
-    // width: coords.width,
-    // top: Math.round(coords.bottom) || null,
-    // left: Math.round(coords.left) || null,
-    // // cssBottom = viewpor.height - coords.y
-    // bottom: Math.round(coords.bottom) || null,
-    // // cssRight = viewpport.width - coords.x
-    // right: Math.round(coords.right) || null,
-  },
-  active: target,
-  showModal: true,
-})
+// const getCoordinatesForModal = (coords, target) => ({
+//   coordinates: {
+//     x: Math.round(coords.x),
+//     y: Math.round(coords.y),
+//     // width: coords.width,
+//     // top: Math.round(coords.bottom) || null,
+//     // left: Math.round(coords.left) || null,
+//     // // cssBottom = viewpor.height - coords.y
+//     // bottom: Math.round(coords.bottom) || null,
+//     // // cssRight = viewpport.width - coords.x
+//     // right: Math.round(coords.right) || null,
+//   },
+//   active: target,
+//   showModal: true,
+// })
 
 class App extends PureComponent {
   constructor(props) {
@@ -28,13 +28,7 @@ class App extends PureComponent {
       coordinates: {
         x: null,
         y: null,
-        // top: null,
-        // bottom: null,
-        // right: null,
-        // left: null,
       },
-      // targets: Array.from({length: targetNumber}, (_,i) => `target-${i+1}`),
-      // positions: combinations,
       active: null,
       gridCoords: [],
       width: null,
@@ -55,7 +49,14 @@ class App extends PureComponent {
 
   handleClickOnTarget = (ref, target) => {
     const coords = ref.getBoundingClientRect();
-    this.setState(getCoordinatesForModal(coords, target))
+    this.setState({
+      coordinates: {
+        x: Math.round(coords.x),
+        y: Math.round(coords.y),
+      },
+      active: target,
+      showModal: true,
+    })
   }
 
   handleWindowResize = () => {

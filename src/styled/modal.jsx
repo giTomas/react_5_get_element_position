@@ -28,7 +28,7 @@ const ModalContent = styled.div`
   min-width: 250px;
   padding: var(--vertical-rhytm) calc(var(--vertical-rhytm)*2);
   line-height: var(--line-height);
-  background-color: rgba(255, 255, 255, 0.9);
+  background-color: rgba(255, 255, 255, 0.95);
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.35);
   animation: 0.5s ${showModal} ease-out;
   z-index: 400;
@@ -63,13 +63,17 @@ const ModalClose = styled.div`
   }
 `;
 
+const Grey = styled.span`
+  color: grey;
+`;
+
 const matchNumber = str => (parseInt(str.match(/\d+/),10)+1);
 
 const Modal = ({coordinates, handleCloseModal, active}) => (
     <ModalContent>
-        <p>Target: {matchNumber(active)}</p>
-        <p>x: {coordinates.x}px</p>
-        <p>y: {coordinates.y}px</p>
+        <p><Grey>Target: {matchNumber(active)}</Grey></p>
+        <p><Grey>x:</Grey> {coordinates.x}px</p>
+        <p><Grey>y:</Grey> {coordinates.y}px</p>
       <ModalClose onClick={handleCloseModal} />
     </ModalContent>
 );

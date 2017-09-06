@@ -21,8 +21,8 @@ const GridContainer = styled.div`
   display: grid;
   justify-items: center;
   align-items: center;
-  grid-auto-columns: 5.5rem;
-  grid-auto-rows: 5.5rem;
+  grid-auto-columns: 6rem;
+  grid-auto-rows: 6rem;
 `;
 
 const Description = styled.h2`
