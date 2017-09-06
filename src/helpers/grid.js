@@ -52,16 +52,16 @@ const sortCoords = (array) => {
 const getColsRows = (wWidth) => {
   let grid = {};
   switch (true) {
-    case  wWidth < 1100 && wWidth > 450:
-      grid.cols = 6;
-      grid.rows = 5;
+    case  wWidth < 1100 && wWidth > 550:
+      grid.cols = 7;
+      grid.rows = 4;
       return grid;
-    case wWidth < 450:
+    case wWidth < 550:
       grid.cols = 4
       grid.rows = 7
       return grid;
     default:
-      grid.cols = 8;
+      grid.cols = 9;
       grid.rows = 4;
       return grid;
   }

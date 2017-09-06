@@ -7,13 +7,13 @@ const getCoordinatesForModal = (coords, target) => ({
   coordinates: {
     x: Math.round(coords.x),
     y: Math.round(coords.y),
-    width: coords.width,
-    top: Math.round(coords.bottom) || null,
-    left: Math.round(coords.left) || null,
-    // cssBottom = viewpor.height - coords.y
-    bottom: Math.round(coords.bottom) || null,
-    // cssRight = viewpport.width - coords.x
-    right: Math.round(coords.right) || null,
+    // width: coords.width,
+    // top: Math.round(coords.bottom) || null,
+    // left: Math.round(coords.left) || null,
+    // // cssBottom = viewpor.height - coords.y
+    // bottom: Math.round(coords.bottom) || null,
+    // // cssRight = viewpport.width - coords.x
+    // right: Math.round(coords.right) || null,
   },
   active: target,
   showModal: true,
@@ -23,19 +23,17 @@ class App extends PureComponent {
   constructor(props) {
     super(props);
 
-    const targetNumber = 12;
-
     this.state = {
       showModal: false,
       coordinates: {
         x: null,
         y: null,
-        top: null,
-        bottom: null,
-        right: null,
-        left: null,
+        // top: null,
+        // bottom: null,
+        // right: null,
+        // left: null,
       },
-      targets: Array.from({length: targetNumber}, (_,i) => `target-${i+1}`),
+      // targets: Array.from({length: targetNumber}, (_,i) => `target-${i+1}`),
       // positions: combinations,
       active: null,
       gridCoords: [],

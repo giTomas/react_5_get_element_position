@@ -16,13 +16,13 @@ const Container = styled.div`
 `;
 
 const GridContainer = styled.div`
-  width: 100%;
+
+  ${'' /* max-width: 100%; */}
   display: grid;
   justify-items: center;
   align-items: center;
   grid-auto-columns: 5.5rem;
   grid-auto-rows: 5.5rem;
-
 `;
 
 const Description = styled.h2`
