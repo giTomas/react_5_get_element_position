@@ -1,10 +1,7 @@
 import React, { PureComponent } from 'react';
-// import { connect } from 'react-redux';
-// import throttle from 'lodash.throttle';
-// import actionCreators from './redux/actionCreators';
 import Page from './styled/page';
-import gridCoordinates from './helpers/cartesian';
-// import getGridCoords from './helpers/random';
+import getGridCoords from './helpers/cartesian';
+import debounce from 'lodash.debounce';
 
 const getCoordinatesForModal = (coords, target) => ({
   coordinates: {
@@ -48,57 +45,30 @@ class App extends PureComponent {
 
   componentDidMount() {
     const width = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
-    // const h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
-    // const gridCoords = getGridCoords(this.state.positions, 12)
-    const gridCoords = gridCoordinates(width)
+    const gridCoords = getGridCoords(width)
     this.setState({gridCoords, width});
 
-    window.addEventListener('resize', () => {
-      console.log('resized')});
+    window.addEventListener('resize', debounce(this.handleWindowResize, 100));
   }
 
   componentWillUnmount() {
-    window.addEventListener('resize', () => {console.log('resized')});
+    window.addEventListener('resize', debounce(this.handleWindowResize, 100));
   }
 
   handleClickOnTarget = (ref, target) => {
     const coords = ref.getBoundingClientRect();
-    // this.setState({
-    //   coordinates: {
-    //     x: Math.round(coords.x),
-    //     y: Math.round(coords.y),
-    //     width: coords.width,
-    //     top: Math.round(coords.bottom) || null,
-    //     left: Math.round(coords.left) || null,
-    //     // cssBottom = viewpor.height - coords.y
-    //     bottom: Math.round(coords.bottom) || null,
-    //     // cssRight = viewpport.width - coords.x
-    //     right: Math.round(coords.right) || null,
-    //   },
-    //   active: target,
-    //   showModal: true,
-    // });
     this.setState(getCoordinatesForModal(coords, target))
   }
 
   handleWindowResize = () => {
-
+    const width = Math.max(document.documentElement.clientWidth);
+    const gridCoords = getGridCoords(width)
+    this.setState({gridCoords, width});
   }
 
   handleGenerateNewGrid = () => {
-    // const gridCoords = getGridCoords(this.state.positions)
-    // this.setState({
-    //   gridCoords,
-    //   showModal: false,
-    //   active: null,
-    // });
-    // console.log(comb(this.state.width))
-    const width = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
-    // const h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
-    // const gridCoords = getGridCoords(this.state.positions, 12)
-    const gridCoords = gridCoordinates(width)
-    this.setState({gridCoords, width});
-    console.log(width)
+    const gridCoords = getGridCoords(this.state.width)
+    this.setState({gridCoords});
   }
 
   handleCloseModal = () => {

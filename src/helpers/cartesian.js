@@ -1,7 +1,12 @@
 import { range, compose } from 'ramda';
-import getGridCoords from './random'
+// import getGridCoords from './random'
 
-function getPossibleCoordinates(arr, ...n) {
+//utils
+
+function getPossibleCoords(obj) {
+  const cols = range(1,obj.cols+1);
+  const rows = range(1,obj.rows+1);
+
   function* cartesian(head, ...tail) {
     let remainder = tail.length ? cartesian(...tail) : [[]];
 
@@ -9,32 +14,49 @@ function getPossibleCoordinates(arr, ...n) {
   }
 
   let cart = [];
-  for (let c of cartesian(arr, ...n)) {
+  for (let c of cartesian(cols, rows)) {
     cart.push([...c])
   }
 
   return cart
 }
-//
-// const cols = range(1,7+1);
-// const rows = range(1,4+1);
 
-const gridCellsCoords = (obj) => {
-  console.log(obj);
-  const cols = range(1,obj.cols+1);
-  const rows = range(1,obj.rows+1);
-  return getPossibleCoordinates(cols, rows);
+const removeItemFromArr = (arr, index) => (
+  [...arr.slice(0, index), ...arr.slice(index + 1, arr.length)]
+);
+
+const getRandomCoords = (pos, count=12) => {
+  let oldPos = pos.slice();
+  let randCoords = [];
+
+  while (count > 0) {
+    const index    = Math.floor(Math.random() * oldPos.length);
+    const item     = oldPos[index];
+    randCoords.push(item);
+    const newPos = removeItemFromArr(oldPos, index);
+    oldPos = newPos;
+    count--
+  }
+
+  return randCoords;
 }
 
+const sortCoords = (array) => {
+  let arr = array.slice();
+  arr.sort((a,b) => a[0] - b[0]);
+  arr.sort((a,b) => a[1] - b[1]);
 
-function getRange(width){
+  return arr;
+}
+
+const getColsRows = (wWidth) => {
   let grid = {};
   switch (true) {
-    case  width < 1000 && width > 451:
+    case  wWidth < 1100 && wWidth > 450:
       grid.cols = 6;
       grid.rows = 5;
       return grid;
-    case width < 450:
+    case wWidth < 450:
       grid.cols = 4
       grid.rows = 7
       return grid;
@@ -45,12 +67,12 @@ function getRange(width){
   }
 }
 
-
-export const gridCoordinates = compose(
-  getGridCoords,
-  gridCellsCoords,
-  getRange,
+const getGridCoords = compose(
+  sortCoords,
+  getRandomCoords,
+  getPossibleCoords,
+  getColsRows,
 )
 
 
-export default gridCoordinates;
+export default getGridCoords;
