@@ -84,7 +84,6 @@ const Page = ({
           key={`target-${i}`}
           handleClick={handleClick}
           index={i}
-          even={i%2}
           active={active === `target-${i}`}
           grid={gridCoord} />
         ))

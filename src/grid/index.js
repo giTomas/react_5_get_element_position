@@ -1,4 +1,4 @@
-import { range, compose } from 'ramda';
+import { range, compose, partial } from 'ramda';
 
 // function* cartesianN(head, ...tail) {
 //   // console.log(tail);
@@ -15,21 +15,24 @@ import { range, compose } from 'ramda';
 // }
 
 
-function getPossibleCoords(obj) {
+function* cartesian(cls, rws) {
+  for (let rw of rws) for (let cl of cls) yield [cl, rw];
+}
+
+function generateCollsRowsCoords(fn, obj={colls:6, rows:5}) {
   const colls = range(1,obj.colls+1);
   const rows = range(1,obj.rows+1);
-
-  function* cartesian(cls, rws) {
-    for (let rw of rws) for (let cl of cls) yield [cl, rw];
-  }
-
+  const gen = fn(colls, rows);
   let coords = [];
-  for (let c of cartesian(colls, rows)) {
+
+  for (let c of gen) {
     coords.push(c)
   }
 
   return coords
 }
+
+const getPossibleCoords = partial(generateCollsRowsCoords, [cartesian]);
 
 const removeItemFromArr = (arr, index) => (
   [...arr.slice(0, index),
