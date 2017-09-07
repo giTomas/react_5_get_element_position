@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import React from 'react';
 
 import TargetElement from './targetElement';
-import Modal from './modal';
+import Modal, {Orange} from './modal';
 
 const Wrapper = styled.div`
   margin-bottom: 15vh;
@@ -71,7 +71,7 @@ const Page = ({
   <Wrapper>
     <Container>
       <Description>
-        Click on the Target and get his x,y coordinates.
+        Click on the <Orange>Target</Orange> and get his x,y coordinates.
       </Description>
       <Button onClick={handleGenerateNewGrid}>
         New Targets

@@ -49,10 +49,11 @@ class App extends PureComponent {
 
   handleClickOnTarget = (ref, target) => {
     const coords = ref.getBoundingClientRect();
+    console.log(coords);
     this.setState({
       coordinates: {
-        x: Math.round(coords.x),
-        y: Math.round(coords.y),
+        x: Math.round(coords.left),
+        y: Math.round(coords.top),
       },
       active: target,
       showModal: true,

@@ -1,7 +1,7 @@
 import React from 'react';
 import styled, { keyframes } from 'styled-components';
 
-const showModal = keyframes`
+const show = keyframes`
   from {
     opacity: 0;
   }
@@ -19,7 +19,7 @@ const ModalContent = styled.div`
   line-height: var(--line-height);
   background-color: rgba(255, 255, 255, 0.95);
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.35);
-  animation: 0.5s ${showModal} ease-out;
+  animation: 0.5s ${show} ease-out;
   z-index: 400;
 `;
 
@@ -50,7 +50,7 @@ const ModalClose = styled.div`
   }
 `;
 
-const Orange = styled.span`
+export const Orange = styled.span`
   color: orange;
 `;
 

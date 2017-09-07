@@ -20,18 +20,15 @@ function getPossibleCoords(obj) {
   const rows = range(1,obj.rows+1);
 
   function* cartesian(cls, rws) {
-
-    for (let rw of rws) for (let cl of cls) yield [cl, rw]
+    for (let rw of rws) for (let cl of cls) yield [cl, rw];
   }
 
-  let cart = [];
+  let coords = [];
   for (let c of cartesian(colls, rows)) {
-    cart.push(c)
-    // cart.push([...c])
-    // console.log(c);
+    coords.push(c)
   }
 
-  return cart
+  return coords
 }
 
 const removeItemFromArr = (arr, index) => (
