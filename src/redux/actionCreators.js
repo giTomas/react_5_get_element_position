@@ -1,30 +1,25 @@
 import actions from './actions';
 
-fucntion createAction(action) {
-  return {
-    type: action,
-    payload,
-  }
-}
+const createAction = action => payload  =>
+  ({
+      type: action,
+      payload,
+  });
 
-fucntion createActionWithoutPayload(action) {
-  return {
+const createActionWithoutPayload = action => () =>
+  ({
     type: action,
-  }
-}
+  });
 
-function updateProgress(payload) {
-  return {
-    type: actions.UPDATE_PROGRESS,
-    payload,
-  }
-}
 
 const actionCreators = {
   updateGridCoords: createAction(actions.UPDATE_GRID_COORDS),
   updateWindowWidth: createAction(actions.UPDATE_WINDOW_WIDTH),
-  closeModal: createAction(actions.CLOSE_MODAL),
+  openModal: createActionWithoutPayload(actions.OPEN_MODAL),
+  closeModal: createActionWithoutPayload(actions.CLOSE_MODAL),
   updateXYCoords: createAction(actions.UPDATE_X_Y_COORDS),
+  setActive: createAction(actions.SET_ACTIVE),
+  resetActive: createActionWithoutPayload(actions.RESET_ACTIVE),
 }
 
 export default actionCreators;

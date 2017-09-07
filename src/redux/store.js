@@ -1,6 +1,6 @@
 import {  createStore } from 'redux';
-import scrollProgressReducer from './reducers';
+import reducer from './reducers';
 
-const store = createStore(scrollProgressReducer);
+const store = createStore(reducer);
 
 export default store;

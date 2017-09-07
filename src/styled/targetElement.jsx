@@ -7,7 +7,7 @@ const show = keyframes`
   }
 `;
 
-const AttachedRef = ({className, children, handleClick, index, target}) => {
+const AttachedRef = ({className, children, handleClick, index}) => {
   let ref = null;
   return (
     <div
@@ -22,7 +22,7 @@ const AttachedRef = ({className, children, handleClick, index, target}) => {
 const TargetElement = styled(AttachedRef)`
   height: 4em;
   width: 4em;
-  --color-active: ${props => props.active ? 'orange' : 'black'};
+  --color-active: ${props => props.active  ? 'orange' : 'black'};
   background-color: var(--color-active);
   position: relative;
   border-radius: 50%;

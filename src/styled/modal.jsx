@@ -1,5 +1,7 @@
 import React from 'react';
 import styled, { keyframes } from 'styled-components';
+import { connect } from 'react-redux';
+import actionCreators from '../redux/actionCreators';
 
 const show = keyframes`
   from {
@@ -65,4 +67,16 @@ const Modal = ({coordinates, handleCloseModal, active}) => (
     </ModalContent>
 );
 
-export default Modal;
+const mapStateToProps = (state) => ({
+  coordinates: state.coordinates,
+  active: state.active,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  handleCloseModal: () => {dispatch(actionCreators.closeModal())}
+})
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(Modal);

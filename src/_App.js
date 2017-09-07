@@ -3,22 +3,6 @@ import Page from './styled/page';
 import getGridCoords from './grid/';
 import debounce from 'lodash.debounce';
 
-// const getCoordinatesForModal = (coords, target) => ({
-//   coordinates: {
-//     x: Math.round(coords.x),
-//     y: Math.round(coords.y),
-//     // width: coords.width,
-//     // top: Math.round(coords.bottom) || null,
-//     // left: Math.round(coords.left) || null,
-//     // // cssBottom = viewpor.height - coords.y
-//     // bottom: Math.round(coords.bottom) || null,
-//     // // cssRight = viewpport.width - coords.x
-//     // right: Math.round(coords.right) || null,
-//   },
-//   active: target,
-//   showModal: true,
-// })
-
 class App extends PureComponent {
   constructor(props) {
     super(props);
@@ -49,7 +33,6 @@ class App extends PureComponent {
 
   handleClickOnTarget = (ref, target) => {
     const coords = ref.getBoundingClientRect();
-    console.log(coords);
     this.setState({
       coordinates: {
         x: Math.round(coords.left),

@@ -3,6 +3,8 @@ import React from 'react';
 
 import TargetElement from './targetElement';
 import Modal, {Orange} from './modal';
+import { connect } from 'react-redux';
+import actionCreators from '../redux/actionCreators';
 
 const Wrapper = styled.div`
   margin-bottom: 15vh;
@@ -59,9 +61,10 @@ const Button = styled.button`
   }
 `;
 
+
+
 const Page = ({
-  showModal,
-  handleCloseModal,
+  showModal2,
   handleGenerateNewGrid,
   handleClick,
   coordinates,
@@ -91,14 +94,23 @@ const Page = ({
 
     </GridContainer>
     {
-      showModal &&
+      showModal2 &&
       <Modal
-        coordinates={coordinates}
-        handleCloseModal={handleCloseModal}
-        active={active}
+        // handleCloseModal={handleCloseModal}
       />
     }
   </Wrapper>
 );
 
-export default Page;
+const mapStateToProps = (state) => ({
+  showModal2: state.showModal,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  handleGenerateNewGrid: () => {dispatch(actionCreators.updateGridCoords())}
+})
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(Page);

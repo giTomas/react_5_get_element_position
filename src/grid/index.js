@@ -84,7 +84,6 @@ const getCollsRows = (wWidth) => {
 const getGridCoords = compose(
   sortCoords,
   getRandomCoords,
-  // curriedGetRandomCoords(randomCount(4,12)),
   getPossibleCoords,
   getCollsRows,
 )
