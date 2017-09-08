@@ -1,5 +1,7 @@
 import React from 'react';
 import styled, { keyframes } from 'styled-components';
+import { connect } from 'react-redux';
+import actionCreators from '../redux/actionCreators';
 
 const show = keyframes`
   from {
@@ -7,8 +9,15 @@ const show = keyframes`
   }
 `;
 
-const AttachedRef = ({className, children, handleClick, index}) => {
+const createHandler = (dispatch) => (ref, target) => {
+  const coords = ref.getBoundingClientRect();
+  dispatch(actionCreators.updateXYCoords(coords));
+  dispatch(actionCreators.setActive(target))
+};
+
+const AttachedRef = ({className, children, index, dispatch}) => {
   let ref = null;
+  const handleClick = createHandler(dispatch);
   return (
     <div
       ref={(elem) => {ref = elem;}}
@@ -70,4 +79,10 @@ const TargetElement = styled(AttachedRef)`
   }
 `;
 
-export default TargetElement;
+const mapStateToProps = (state, props) => ({
+  active: state.active === `target-${props.index}`,
+})
+
+export default connect(
+   mapStateToProps,
+)(TargetElement);

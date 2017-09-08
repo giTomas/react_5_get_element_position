@@ -64,10 +64,9 @@ const Button = styled.button`
 
 
 const Page = ({
-  showModal2,
   handleGenerateNewGrid,
+  showModal,
   handleClick,
-  coordinates,
   active,
   gridCoords,
 }) => (
@@ -85,25 +84,21 @@ const Page = ({
         gridCoords.map((gridCoord,i) => (
         <TargetElement
           key={`target-${i}`}
-          handleClick={handleClick}
           index={i}
-          active={active === `target-${i}`}
           grid={gridCoord} />
         ))
       }
 
     </GridContainer>
     {
-      showModal2 &&
-      <Modal
-        // handleCloseModal={handleCloseModal}
-      />
+      showModal && <Modal />
     }
   </Wrapper>
 );
 
 const mapStateToProps = (state) => ({
-  showModal2: state.showModal,
+  showModal: state.showModal,
+  gridCoords: state.gridCoords,
 });
 
 const mapDispatchToProps = (dispatch) => ({
