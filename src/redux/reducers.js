@@ -22,7 +22,6 @@ function reducer(state=initialState, action) {
         active: '',
       };
     case actions.UPDATE_WINDOW_WIDTH:
-      console.log(action.payload)
       return {
         ...state,
         wWidth: action.payload,
@@ -36,7 +35,6 @@ function reducer(state=initialState, action) {
         showModal: true,
       };
     case actions.CLOSE_MODAL:
-      console.log('close');
       return {
         ...state,
         showModal: false,
