@@ -1,8 +1,7 @@
 import styled from 'styled-components';
 import React from 'react';
-
 import TargetElement from './targetElement';
-import Modal, {Orange} from './modal';
+import Modal, { Orange } from './modal';
 import { connect } from 'react-redux';
 import actionCreators from '../redux/actionCreators';
 
@@ -61,13 +60,9 @@ const Button = styled.button`
   }
 `;
 
-
-
 const Page = ({
   handleGenerateNewGrid,
   showModal,
-  handleClick,
-  active,
   gridCoords,
 }) => (
   <Wrapper>

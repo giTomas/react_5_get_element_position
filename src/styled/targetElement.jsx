@@ -70,7 +70,6 @@ const TargetElement = styled(AttachedRef)`
     color: ${props => props.active ? 'black' : 'white'};
     height: 33.33%;
     width: 33.33%;
-    ${'' /* line-height: 2; */}
     background-color: var(--color-active);
     z-index: 100;
     border-radius: 50%;
